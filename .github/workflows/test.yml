@@ -3,19 +3,23 @@ name: Test
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Run something
+        run: echo test > test.txt
       - name: Run test
         env:
           GITHUB_TOKEN: ${{ secrets.CI_KARGO_TOKEN }}
         run: |
+          ls -al
+          ls ${{ github.workspace }}
           echo $GITHUB_TOKEN
           echo ${{ secrets.CI_KARGO_TOKEN }}
