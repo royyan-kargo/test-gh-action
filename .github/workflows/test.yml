@@ -1,6 +1,16 @@
 name: Test
 
 on:
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: Environment
+        default: 'integration'
+        options:
+        - integration
+        - stg
+        - prd
   push:
     branches:
       - master
@@ -17,5 +27,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CI_KARGO_TOKEN }}
         run: |
+          echo ${{ inputs.choice }}
           echo $GITHUB_TOKEN
           echo ${{ secrets.CI_KARGO_TOKEN }}
