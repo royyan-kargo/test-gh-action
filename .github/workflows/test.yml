@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - if: ${{ github.event.inputs.choice }} == '' || ${{ github.event.inputs.choice }} == 'integration'
-        run: echo Hello
+        run: echo ${{ github.event.inputs.choice }} Hello
       - name: Run test
         env:
           GITHUB_TOKEN: ${{ secrets.CI_KARGO_TOKEN }}
