@@ -22,7 +22,8 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - if: ${{ github.event.inputs.choice }} == '' || ${{ github.event.inputs.choice }} == 'integration'
+        run: echo Hello
       - name: Run test
         env:
           GITHUB_TOKEN: ${{ secrets.CI_KARGO_TOKEN }}
