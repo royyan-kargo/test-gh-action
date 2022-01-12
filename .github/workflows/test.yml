@@ -11,6 +11,9 @@ on:
         - integration
         - stg
         - prd
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
   push:
     branches:
       - main
